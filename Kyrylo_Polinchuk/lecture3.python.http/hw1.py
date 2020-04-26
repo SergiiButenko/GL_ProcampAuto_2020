@@ -2,8 +2,8 @@ import requests
 url0='http://localhost:5002/'
 response1=requests.post(url0+'login', json={'username': 'test', 'password':'test'})
 print(response1.json())
-response2=requests.post(url0, data="item")
-response3=requests.get(url0, params="item").json()
+response2=requests.post(url0, data="item").status_code
+response3=requests.get(url0, params="item").status_code
 response4=requests.delete(url0)
 print(response2)
 print(response3)
