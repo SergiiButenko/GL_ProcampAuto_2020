@@ -1,0 +1,26 @@
+git checkout hotfix
+git revert HEAD
+git commit "fix"
+git push origin hotfix
+
+git stash
+git checkout hotfix 
+touch file1.txt
+git add file1.txt
+git commit --ammend -m "fix it"
+git checkout mainbranch
+git stash apply 
+
+ 
+git checkout master
+git checkout -b hotfix
+vim file1.txt
+git add file1.txt
+git commit -m "fix it"
+git push --set-upstream origin hotfix
+#pull request
+git checkout US_123
+git merge hotfix
+git push --set-upstream origin US_123
+git branch -d hotfix
+git push origin --delete hotfix
