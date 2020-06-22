@@ -1,0 +1,13 @@
+git checkout sergey-shidlovlsy-branch-name
+
+notepad newFileOne.txt
+notepad newFileTwo.txt
+
+git add newFileOne.txt
+git commit --amend -m "newFileOne.txt has been added"
+
+git add newFileTwo.txt
+git stash
+
+git push --force origin sergey-shidlovlsy-branch-name
+git stash apply

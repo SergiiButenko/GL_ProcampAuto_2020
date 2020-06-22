@@ -1,0 +1,18 @@
+git stash
+git checkout master
+git pull
+
+git checkout -b hotfix-branch-name
+git stash apply
+
+notepad TestFileThree.txt
+
+git add *
+git commit -m "Added hotfix to new branch"
+git push origin hotfix-branch-name
+
+git checkout master
+git pull
+git checkout sergey-shidlovlsy-branch-name
+git rebase master 
+git push --force origin sergey-shidlovlsy-branch-name
