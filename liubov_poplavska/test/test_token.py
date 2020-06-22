@@ -1,5 +1,6 @@
 import time
-from liubov_poplavska.api.auth import API
+from liubov_poplavska.api.api import API
+
 
 def test_token_expired_and_renew():
     api = API(username='test', password='test')
