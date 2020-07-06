@@ -7,4 +7,4 @@ RUN pip3 install -r requirements
 
 COPY . /app/
 
-ENTRYPOINT [ "python3", "/app/src/server/simple-app-v2.py" ]
+ENTRYPOINT [ "sh", "entrypoint.sh" ]
