@@ -1,0 +1,14 @@
+version: '3'
+services:
+  simple-app:
+    build: ../simple-app
+    
+  simple-app-tests:
+    build: ../hometask_authentication
+    environment:
+      SIMPLE_APP_HOST: simple-app
+      SIMPLE_APP_PORT: 5002
+    volumes:
+      - ./report:/simple-app-tests/target/site
+    depends_on:
+      - simple-app

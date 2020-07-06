@@ -1,0 +1,14 @@
+version: '3'
+services:
+  simple-app:
+    image: "simple-app"
+    
+  simple-app-tests:
+    image: "simple-app-tests"
+    environment:
+      SIMPLE_APP_HOST: simple-app
+      SIMPLE_APP_PORT: 5002
+    volumes:
+      - ./report:/simple-app-tests/target/site
+    depends_on:
+      - simple-app
