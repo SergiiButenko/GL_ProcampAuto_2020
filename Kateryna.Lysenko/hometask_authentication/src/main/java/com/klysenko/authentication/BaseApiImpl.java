@@ -26,7 +26,7 @@ public class BaseApiImpl implements BaseApi {
 
     public void login() {
         ResponseEntity<AuthResponse> authResponseEntity = restTemplate.postForEntity(
-                EndPoints.login,
+                EndPoints.getLogin(),
                 new AuthForm(username, password),
                 AuthResponse.class);
         this.authResponse = authResponseEntity.getBody();
@@ -36,7 +36,7 @@ public class BaseApiImpl implements BaseApi {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + authResponse.getRefreshToken());
         HttpEntity httpEntity = new HttpEntity(headers);
-        ResponseEntity<RefreshResponse> refreshResponseEntity = restTemplate.exchange(EndPoints.refresh,
+        ResponseEntity<RefreshResponse> refreshResponseEntity = restTemplate.exchange(EndPoints.getRefresh(),
                 HttpMethod.POST,
                 httpEntity,
                 RefreshResponse.class);
@@ -50,7 +50,7 @@ public class BaseApiImpl implements BaseApi {
         headers.add("Authorization", "Bearer " + authResponse.getAccessToken());
         HttpEntity httpEntity = new HttpEntity(headers);
         ResponseEntity<ItemsResponse> itemsResponseResponseEntity = restTemplate.exchange(
-                EndPoints.items,
+                EndPoints.getItems(),
                 HttpMethod.GET,
                 httpEntity,
                 ItemsResponse.class);

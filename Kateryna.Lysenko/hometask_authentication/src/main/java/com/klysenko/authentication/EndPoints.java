@@ -1,7 +1,29 @@
 package com.klysenko.authentication;
 
 public final class EndPoints {
-    public static final String login = "http://localhost:5002/login";
-    public static final String items = "http://localhost:5002/items";
-    public static final String refresh = "http://localhost:5002/refresh";
+
+    private static String getHost() {
+        String appHost = System.getenv("SIMPLE_APP_HOST");
+        String appPort = System.getenv("SIMPLE_APP_PORT");
+        if (appHost != null && appPort != null) {
+            return "http://" + appHost + ":" + appPort;
+        } else {
+            return "http://localhost:5002";
+        }
+    }
+
+    public static String getLogin() {
+        return getHost() + "/login";
+    }
+
+    public static String getItems() {
+        return getHost() + "/items";
+    }
+
+    public static String getRefresh() {
+        return getHost() + "/refresh";
+    }
 }
+
+
+
