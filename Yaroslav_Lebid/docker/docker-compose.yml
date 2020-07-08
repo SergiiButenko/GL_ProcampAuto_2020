@@ -1,0 +1,13 @@
+version: '3'
+services:
+    simpleapp:
+        build: ./simpleapp
+        
+    tests:
+        build: ./src
+        links:
+            - simpleapp
+        volumes:
+            - C:\\cygwin64\\home\\Yas\\GL_ProcampAuto_2020\\Yaroslav_Lebid\\docker\\src:/src
+        depends_on:
+            - simpleapp
