@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 class URLs:
     """ contains URLs and endpoints used in the project """
 
-    base_url = 'http://0.0.0.0:5002'
+    base_url = 'http://simple-app:5002'
 
     # ENDPOINTS
     root_endpoint = '/'

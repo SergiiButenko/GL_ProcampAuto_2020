@@ -1,0 +1,11 @@
+version: "3"
+services:
+  simple-app:
+    build: ./src
+
+  tests:
+    build: ./test
+    depends_on:
+      - simple-app
+    volumes:
+      - /home/denys/Documents/GitHub/GL_ProcampAuto_2020/denys.lozinskyi/Lecture_Docker/reports:/logs
