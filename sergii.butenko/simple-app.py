@@ -51,12 +51,12 @@ def pass200_no_auth_post():
     return jsonify(json=request.json)
 
 
-PATCH /times?find;name=serbut
-{
-    operation: "update",
-    fild:"name",
-    value:"new_name"
-}
+# PATCH /times?find;name=serbut
+# {
+#     operation: "update",
+#     fild:"name",
+#     value:"new_name"
+# }
 @app.route('/items', methods=['GET', 'PUT', 'PATCH'])
 @jwt_required
 def pass200():
