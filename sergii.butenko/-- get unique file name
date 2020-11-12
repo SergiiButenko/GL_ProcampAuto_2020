@@ -1,0 +1,49 @@
+-- get unique file name
+SELECT distinct (f.name), f.id, u.email, f.created, (f.size/1024) AS "size, Kb"
+FROM user_interaction.files AS f
+INNER JOIN users AS u on f.owner = u.id
+WHERE u.email like '%serbut%'
+AND f.size is not null
+ORDER BY f.name, f.created
+LIMIT 1000
+
+-- get oldest file from group with same name
+SELECT distinct on(f.name) u.email, f.id, f.name, f.created, (f.size/1024) AS "size, Kb"
+FROM user_interaction.files AS f
+INNER JOIN users AS u on f.owner = u.id
+WHERE u.email like '%serbut%'
+AND f.size is not null
+AND f.name = 'virus_setB_10K.fastq.fasta'
+ORDER BY f.name, f.created ASC
+LIMIT 1000
+
+-- get avr file size by single user
+SELECT u.email, ARRAY_AGG(f.name), AVG(f.size/1024) AS "size, Kb"
+FROM user_interaction.files AS f
+INNER JOIN users AS u on f.owner = u.id
+WHERE u.email like '%serbut%'
+AND f.size is not null
+GROUP BY u.email
+LIMIT 1000
+
+
+
+-- get size in Kb for top biggest 10 files for user serbut@ser.but 
+
+SELECT u.email, f.name, (f.size/1024) AS "size, Kb"
+FROM user_interaction.files AS f
+INNER JOIN users AS u on f.owner = u.id
+WHERE u.email like '%serbut%'
+AND f.size is not null
+ORDER BY (f.size/1024) DESC
+LIMIT 10
+
+
+WHERE owner in (
+select id from users where email = 'serbut@ser.but'
+)
+LIMIT 10
+
+
+--'serbut@ser.but'
+SELECT * FROM users WHERE email = 'serbut@ser.but'
